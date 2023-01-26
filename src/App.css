@@ -22,6 +22,7 @@ code {
 /* -------------------------------- utilitis -------------------------------- */
 :root {
   --white: #fff;
+  --black:#000;
   --black1: #00000064;
 
   --blue1: #eff8ff;
@@ -84,8 +85,7 @@ p {
 .App {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  height: 100vh;
+
   margin:2rem 0rem;
 }
 
@@ -96,6 +96,7 @@ p {
   padding: 2rem 5rem;
   backdrop-filter: blur(15px);
   max-width: 50%;
+  
 }
 
 /* ---------------------------------- home ---------------------------------- */
@@ -164,12 +165,16 @@ option {
 }
 .btn-answer:hover{
   background-color: var(--blue4);
-  border: none;
+  border: solid 1px var(--blue4);
 }
 .btn-answer:focus{
   background-color: var(--blue2);
   color: var(--white);
-  border: none;
+  
+}
+.btn-check{
+  width: 200px;
+  margin: auto;
 }
 .home-icon{
   position: fixed;
@@ -227,5 +232,6 @@ option {
   .circle2 {
     width: 250px;
     height: 250px;
+    left: -80px;
   }
 }

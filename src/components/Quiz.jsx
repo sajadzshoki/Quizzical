@@ -1,20 +1,21 @@
-//  https://opentdb.com/api.php?amount=10&category=10&difficulty=easy&type=multiple
+//api generator :  https://opentdb.com/api_config.php
 import React, { useEffect, useState } from "react";
-
 import { AiOutlineHome } from "react-icons/ai";
 import { Link } from "react-router-dom";
+// import he from 'he';
 const Quiz = () => {
   const [quizData, setQuizData] = useState([]);
 
+  const url = "https://opentdb.com/api.php?amount=5&type=multiple";
+  // const costumeUrl = "https://opentdb.com/api.php?amount=10&category=10&difficulty=easy&type=multiple"
   useEffect(() => {
-    fetch(
-      "https://opentdb.com/api.php?amount=10&category=10&difficulty=easy&type=multiple"
-    )
+    fetch(url)
       .then((res) => res.json())
       .then((data) => {
         setQuizData(data.results);
       });
   }, []);
+
   return (
     <>
       <Link to="/">
