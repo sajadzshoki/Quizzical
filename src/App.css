@@ -261,6 +261,9 @@ place-items: center;
     
 /* ------------------------------- phone size ------------------------------- */
 @media(max-width: 900px) {
+  h1{
+    font-size: 4rem;
+  }
   .main-card {
     padding: 3rem 2rem;
     backdrop-filter: blur(20px);
