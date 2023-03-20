@@ -192,7 +192,7 @@ option {
   height: 400px;
   border-radius: 300px 500px 300px 500px;
   background-color: var(--blue4);
-  animation: rotate 3s infinite;
+  animation: rotate 8s infinite linear;
   box-shadow: inset 0px 0px 60px var(--black1);
 }
 
@@ -204,7 +204,7 @@ option {
   height: 350px;
   border-radius: 800px 650px 800px 650px;
   background-color: var(--orange2);
-  animation: rotate 3s infinite reverse;
+  animation: rotate 5s infinite reverse linear;
   box-shadow: inset 0px 0px 60px var(--black1);
   transition: 0.3s all;
 }

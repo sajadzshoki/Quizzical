@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-const Home = () => {
+function Home(props) {
+  const { handleFormChange, formData } = props;
   return (
     <div className="home">
       <h1>Quizzical</h1>
@@ -8,14 +9,23 @@ const Home = () => {
 
       <form className="form">
         <label htmlFor="amountOfQuestions">Amount of Questions</label>
-        <select>
+        <select
+          onChange={handleFormChange}
+          value={formData.amountOfQuestions}
+          name="amountOfQuestions"
+        >
           <option value="5">5</option>
           <option value="10">10</option>
           <option value="15">15</option>
         </select>
 
         <label htmlFor="category">Category</label>
-        <select>
+        <select
+          onChange={handleFormChange}
+          value={formData.category}
+          name="category"
+          id="category"
+        >
           <option value="any">Any Category</option>
           <option value="9">General Knowledge</option>
           <option value="10">Books</option>
@@ -44,8 +54,13 @@ const Home = () => {
         </select>
 
         <label htmlFor="difficulty">Difficulty</label>
-        <select>
-          <option value="">Any</option>
+        <select
+          onChange={handleFormChange}
+          value={formData.difficulty}
+          name="difficulty"
+          id="difficulty"
+        >
+          <option value='any'>Any</option>
           <option value="easy">Easy</option>
           <option value="medium">Medium</option>
           <option value="hard">Hard</option>
@@ -57,6 +72,6 @@ const Home = () => {
       <button className="btn about-btn">About</button>
     </div>
   );
-};
+}
 
 export default Home;
