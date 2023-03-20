@@ -10,6 +10,8 @@ import Loader from "./Loader";
 const Quiz = (props) => {
   const { formData } = props;
   const [quizData, setQuizData] = useState([]);
+  const [isShowAnswers, setIsShowAnswers] = useState(false);
+  const [resetQuiz, setResetQuiz] = useState(0);
 
   const { amountOfQuestions, category, difficulty } = formData;
 
@@ -30,20 +32,32 @@ const Quiz = (props) => {
         setQuizData(() => {
           return data.results.map((question) => {
             const incorrect = question.incorrect_answers.map((answer) => {
-              return { value: answer, id: nanoid() };
+              return {
+                value: answer,
+                id: nanoid(),
+                isHeld: false,
+                isCorrect: false,
+              };
             });
-            const correct = { value: question.correct_answer, id: nanoid() };
-
+            const correct = {
+              value: question.correct_answer,
+              id: nanoid(),
+              isHeld: false,
+              isCorrect: true,
+            };
+            
             let allAnswersArr = [...incorrect];
             const randomNum = Math.floor(Math.random() * 4);
             allAnswersArr.splice(randomNum, 0, correct);
-
+            
             return { ...question, allAnswers: allAnswersArr, id: nanoid() };
           });
         });
       })
       .catch((error) => console.log(error));
-  }, [amountOfQuestions, category, difficulty]);
+    }, [amountOfQuestions, category, difficulty,resetQuiz]);
+    
+    if (!quizData.length) return <Loader />;
 
   const questionElements = quizData.map((question, index) => {
     return (
@@ -53,12 +67,62 @@ const Quiz = (props) => {
         allAnswers={question.allAnswers}
         qID={question.id}
         questionIndex={index}
+        isShowAnswers={isShowAnswers}
+        updateHeld={updateHeld}
       />
     );
   });
 
-  if (!quizData.length) return <Loader />;
+  // important ?????????????????????????????????????????????????????????????????????
+  function updateHeld(qID, aID) {
+    setQuizData((prevQuizData) => {
+      return prevQuizData.map((question) => {
+        if (qID !== question.id) {
+          return question;
+        } else {
+          const newAnswers = question.allAnswers.map((answer) => {
+            return answer.id === aID
+              ? { ...answer, isHeld: !answer.isHeld }
+              : { ...answer, isHeld: false };
+          });
 
+          return { ...question, allAnswers: newAnswers };
+        }
+      });
+    });
+  }
+  function checkAnswers() {
+    setIsShowAnswers(true);
+  }
+  const goToTop = () => {
+    window.scrollTo({
+        top: 0,
+        behavior: window.innerWidth > 600 ? 'auto' : 'smooth',
+    });
+};
+
+function reset() {
+    setIsShowAnswers(false);
+    setResetQuiz(prev => prev + 1);
+    goToTop();    
+}
+  let score = 0
+  if(isShowAnswers){
+    quizData.map((question) => {
+        return question.allAnswers.forEach(answer => {
+            return answer.isHeld && answer.isCorrect ? score++ : score;
+        });
+    });
+}
+  let buttonElements = !isShowAnswers 
+  ? 
+  
+     <button className="btn " onClick={checkAnswers}>Check Answers</button>
+  :
+  <div className='final-footer'>
+      <p className='quiz__finalText'>{`You scored ${score}/${formData.amountOfQuestions}`}</p>
+      <button className='btn play-again-btn' onClick={reset}>Play Again</button>
+  </div>;    
   return (
     <>
       <Link to="/">
@@ -67,7 +131,8 @@ const Quiz = (props) => {
       <div className="quiz">
         <h1 className="quiz-topic">Quizzical</h1>
         <div>{questionElements}</div>
-        <button className="btn btn-check">Check Answers</button>
+        <div className="btn-check">{buttonElements}</div>
+        
       </div>
     </>
   );

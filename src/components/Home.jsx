@@ -69,7 +69,7 @@ function Home(props) {
       <Link to="/quiz">
         <button className="btn play-btn">Play</button>
       </Link>
-      <button className="btn about-btn">About</button>
+      {/* <button className="btn about-btn">About</button> */}
     </div>
   );
 }

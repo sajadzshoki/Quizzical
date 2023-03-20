@@ -83,11 +83,10 @@ p {
 }
 /* ----------------------------------- App ---------------------------------- */
 .App {
-  height: 90vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  /* margin:2rem 0rem; */
+  margin:3rem 0rem;
 }
 
 .main-card {
@@ -139,6 +138,7 @@ option {
 
 /* ---------------------------------- quiz ---------------------------------- */
 .quiz{
+  
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -182,6 +182,15 @@ option {
   top:1rem;
   left: 1rem;
   
+}
+.quiz__finalText{
+  font-size:x-large;
+  color: var(--blue2);
+  text-align: center;
+  margin: 1rem 0rem;
+}
+.play-again-btn{
+  background-color: var(--orange1);
 }
 /* --------------------------------- circles -------------------------------- */
 
@@ -227,7 +236,7 @@ place-items: center;
   position: relative;
   width:  100px;
   height: 100px;
-  background: var(--blue3);
+  background: var(--blue4);
   transform: rotateX(65deg) rotate(45deg);
   /* transform: perspective(200px) rotateX(65deg) rotate(45deg);  */
   color: #fff;
