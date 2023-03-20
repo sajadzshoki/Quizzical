@@ -14,8 +14,8 @@ const Question = (props) => {
   });
   return (
     <div className="question-container">
-      <h3 >{he.decode(question)}</h3>
-      <div >{answerButtons}</div>
+      <h3>{he.decode(question)}</h3>
+      <div>{answerButtons}</div>
     </div>
   );
 };

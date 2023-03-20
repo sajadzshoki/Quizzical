@@ -83,10 +83,11 @@ p {
 }
 /* ----------------------------------- App ---------------------------------- */
 .App {
+  height: 90vh;
   display: flex;
   justify-content: center;
-
-  margin:2rem 0rem;
+  align-items: center;
+  /* margin:2rem 0rem; */
 }
 
 .main-card {
@@ -95,7 +96,7 @@ p {
   border-radius: 20px;
   padding: 2rem 5rem;
   backdrop-filter: blur(15px);
-  max-width: 50%;
+  max-width: 60%;
   
 }
 
@@ -217,6 +218,38 @@ option {
     transform: rotate(360deg);
   }
 }
+/* --------------------------------- loader --------------------------------- */
+.loader-container{
+display: grid;
+place-items: center;
+}
+.loader {
+  position: relative;
+  width:  100px;
+  height: 100px;
+  background: var(--blue3);
+  transform: rotateX(65deg) rotate(45deg);
+  /* transform: perspective(200px) rotateX(65deg) rotate(45deg);  */
+  color: #fff;
+  animation: layers1 1s linear infinite alternate;
+}
+.loader:after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.7);
+  animation: layerTr 1s linear infinite alternate;
+}
+
+@keyframes layers1 {
+  0% { box-shadow: 0px 0px 0 0px  }
+ 90% , 100% { box-shadow: 40px 40px 0 -4px  }
+}
+@keyframes layerTr {
+  0% { transform:  translate(0, 0) scale(1) }
+  100% {  transform: translate(-45px, -45px) scale(1) }
+}
+    
 /* ------------------------------- phone size ------------------------------- */
 @media(max-width: 900px) {
   .main-card {
