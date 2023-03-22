@@ -3,14 +3,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: var(--blue1);
 }
 
@@ -87,6 +84,7 @@ p {
   justify-content: center;
   align-items: center;
   margin:3rem 0rem;
+  
 }
 
 .main-card {
@@ -227,6 +225,38 @@ option {
     transform: rotate(360deg);
   }
 }
+.about{
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  padding: 2rem 1.2rem;
+  max-width: 30%;
+  z-index: 100;
+  backdrop-filter:blur(8px);
+  /* background-color: var(--gray2); */
+  background-color: var(--black1);
+  transition: 0.4s all ;
+}
+.about article {
+  margin-bottom: 3rem;
+}
+.about p ,.about h3 {
+  color: var(--blue1);
+}
+.about a {
+  color: var(--blue1);
+}
+.close-icon{
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  cursor: pointer;
+}
+.close-icon:hover{
+  color: red;
+
+}
 /* --------------------------------- loader --------------------------------- */
 .loader-container{
 display: grid;
@@ -241,6 +271,7 @@ place-items: center;
   /* transform: perspective(200px) rotateX(65deg) rotate(45deg);  */
   color: #fff;
   animation: layers1 1s linear infinite alternate;
+  margin-top: 1rem;
 }
 .loader:after {
   content: '';
@@ -268,6 +299,9 @@ place-items: center;
     padding: 3rem 2rem;
     backdrop-filter: blur(20px);
     max-width: 90%;
+  }
+  .about{
+    max-width: 70%;
   }
   .circle1 {
     width: 300px;

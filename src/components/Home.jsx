@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
 function Home(props) {
-  const { handleFormChange, formData } = props;
+  const { handleFormChange, formData, handleModalOpen } = props;
   return (
     <div className="home">
       <h1>Quizzical</h1>
@@ -13,10 +14,15 @@ function Home(props) {
           onChange={handleFormChange}
           value={formData.amountOfQuestions}
           name="amountOfQuestions"
+          id="amountOfQuestions"
         >
           <option value="5">5</option>
           <option value="10">10</option>
           <option value="15">15</option>
+          <option value="20">20</option>
+          <option value="30">30</option>
+          <option value="40">40</option>
+          <option value="50">50</option>
         </select>
 
         <label htmlFor="category">Category</label>
@@ -60,7 +66,7 @@ function Home(props) {
           name="difficulty"
           id="difficulty"
         >
-          <option value='any'>Any</option>
+          <option value="any">Any</option>
           <option value="easy">Easy</option>
           <option value="medium">Medium</option>
           <option value="hard">Hard</option>
@@ -69,7 +75,9 @@ function Home(props) {
       <Link to="/quiz">
         <button className="btn play-btn">Play</button>
       </Link>
-      {/* <button className="btn about-btn">About</button> */}
+      <button className="btn about-btn" onClick={handleModalOpen}>
+        About
+      </button>
     </div>
   );
 }

@@ -13,16 +13,16 @@ const Question = (props) => {
             styles = { backgroundColor: '#94D7A2' ,border: 'none'};
 
         } else if (answer.isHeld && answer.isCorrect === false) {
-            styles = { backgroundColor: '#F8BCBC', opacity: '50%',border: 'none' };
+            styles = { backgroundColor: '#F8BCBC', opacity: '70%',border: 'none' };
 
         } else if (answer.isCorrect) {
-            styles = { backgroundColor: '#94D7A2',border: 'none'};
+            styles = { backgroundColor: 'var(--blue4)',border: 'none'};
 
         } else if (answer.isCorrect === false) {
             styles = { opacity: '50%' };
         }
     }
-    return (
+    return (                                                                                                                                                                                                                              
       <button
         key={nanoid()}
         className="btn-answer"

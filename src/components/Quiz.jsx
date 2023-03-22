@@ -20,12 +20,12 @@ const Quiz = (props) => {
     if (category === "any") {
       costumeUrl = `https://opentdb.com/api.php?amount=${amountOfQuestions}&difficulty=${difficulty}&type=multiple`;
     }
-    if (difficulty === "any") {
-      costumeUrl = `https://opentdb.com/api.php?amount=${amountOfQuestions}&difficulty=${difficulty}&type=multiple`;
-    }
-    if (difficulty === "any" && category === "any") {
-      costumeUrl = `https://opentdb.com/api.php?amount=${amountOfQuestions}&type=multiple`;
-    }
+    // if (difficulty === "any") {
+    //   costumeUrl = `https://opentdb.com/api.php?amount=${amountOfQuestions}&difficulty=${difficulty}&type=multiple`;
+    // }
+    // if (difficulty === "any" && category === "any") {
+    //   costumeUrl = `https://opentdb.com/api.php?amount=${amountOfQuestions}&type=multiple`;
+    // }
     fetch(costumeUrl)
       .then((res) => res.json())
       .then((data) => {
